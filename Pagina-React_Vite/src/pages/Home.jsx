@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
 import { ComprasPage } from "./Compraspage";
-import {Carritopage} from "./Carritopage"
+import { Carritopage } from "./Carritopage";
 import { ProductsProvider } from "../Context/ProductsProvider";
 import { CarritoProvider } from "../Context/CarritoProvider";
 
@@ -21,3 +21,4 @@ export default function Home() {
         </ProductsProvider>
     );
 }
+

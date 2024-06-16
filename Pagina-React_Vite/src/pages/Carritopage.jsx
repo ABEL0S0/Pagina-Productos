@@ -7,11 +7,12 @@ export const Carritopage = () => {
 
   const calcularTotal = () => {
     return listaCompras
-      .reduce((total, item) => total + item.precio * item.stock, 0)
+      .reduce((total, item) => total + item.precio * item.cantidad, 0)
       .toFixed(2);
   };
+
   const handleImpresion = () => {
-    print();
+    print(); // Aquí deberías implementar la lógica para imprimir
   };
 
   return (
@@ -28,18 +29,18 @@ export const Carritopage = () => {
         <tbody>
           {listaCompras.map((item) => (
             <tr key={item.id}>
-              <th>{item.nombre}</th>
-              <td>{item.precio}</td>
+              <td>{item.nombre}</td>
+              <td>${item.precio}</td>
               <td>
                 <button
-                  className="btn btn-ouline-primary"
+                  className="btn btn-outline-primary"
                   onClick={() => disminuirCantidad(item.id)}
                 >
                   -
                 </button>
-                <button className="btn btn-primary">{item.cantidad}</button>
+                <button className="btn btn-primary mx-2">{item.cantidad}</button>
                 <button
-                  className="btn btn-ouline-primary"
+                  className="btn btn-outline-primary"
                   onClick={() => aumentarCantidad(item.id)}
                 >
                   +
@@ -57,12 +58,12 @@ export const Carritopage = () => {
             </tr>
           ))}
 
-          <th>
-            <b>TOTAL: </b>
-          </th>
-          <td></td>
-          <td></td>
-          <td>${calcularTotal()}</td>
+          <tr>
+            <td colSpan="3">
+              <b>TOTAL:</b>
+            </td>
+            <td>${calcularTotal()}</td>
+          </tr>
         </tbody>
       </table>
 
@@ -70,7 +71,7 @@ export const Carritopage = () => {
         <button
           className="btn btn-primary"
           onClick={handleImpresion}
-          disabled={listaCompras < 1}
+          disabled={listaCompras.length < 1}
         >
           COMPRAR
         </button>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import '../styles.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "../styles.css";
 import SignInForm from "./SignIn";
 import SignUpForm from "./SignUp";
 import Home from "../pages/Home";
@@ -11,7 +11,6 @@ export default function App() {
   const handleOnClick = (text) => {
     if (text !== type) {
       setType(text);
-      return;
     }
   };
 
@@ -20,15 +19,14 @@ export default function App() {
     // Aquí puedes manejar la lógica de lo que sucede después del inicio de sesión
   };
 
-  const containerClass =
-    "container " + (type === "signUp" ? "right-panel-active" : "");
+  const containerClass = "container " + (type === "signUp" ? "right-panel-active" : "");
 
   return (
     <Router>
       <Routes>
         <Route path="/home/*" element={<Home />} />
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
             <div className="App">
               <div className={containerClass} id="container">
@@ -38,25 +36,16 @@ export default function App() {
                   <div className="overlay">
                     <div className="overlay-panel overlay-left">
                       <h1>Iniciar Sesion</h1>
-                      <p>
-                        Para mantenerse conectado con nosotros, inicie sesión con su información personal
-                      </p>
-                      <button
-                        className="ghost"
-                        id="signIn"
-                        onClick={() => handleOnClick("signIn")}
-                      >
+                      <p>Para mantenerse conectado con nosotros, inicie sesión con su información personal</p>
+                      <button className="ghost" id="signIn" onClick={() => handleOnClick("signIn")}>
                         Iniciar Sesion
                       </button>
+                      <Link to="/home/carrito">Ir al Carrito</Link> {/* Asegúrate de que el enlace apunte a /home/carrito */}
                     </div>
                     <div className="overlay-panel overlay-right">
                       <h1>Registrarse aqui</h1>
                       <p>Introduce tus datos personales y comienza tu viaje con nosotros.</p>
-                      <button
-                        className="ghost"
-                        id="signUp"
-                        onClick={() => handleOnClick("signUp")}
-                      >
+                      <button className="ghost" id="signUp" onClick={() => handleOnClick("signUp")}>
                         Registrarse
                       </button>
                     </div>
@@ -64,9 +53,10 @@ export default function App() {
                 </div>
               </div>
             </div>
-          } 
+          }
         />
       </Routes>
     </Router>
   );
 }
+

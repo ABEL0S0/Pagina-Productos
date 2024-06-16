@@ -8,18 +8,21 @@ export const CarritoProvider = ({ children }) => {
   const comprasReducer = (state = initialState, action = {}) => {
     switch (action.type) {
       case "[CARRITO] Agregar Compra":
+        // Asegúrate de que action.payload sea un objeto válido con id, nombre, precio, cantidad, etc.
+        action.payload.cantidad = 1; // Esto se podría manejar dentro del payload si es necesario
         return [...state, action.payload];
       case "[CARRITO] Aumentar Cantidad Compra":
         return state.map((item) => {
-          const cant = item.cantidad + 1;
-          if (item.id === action.payload) return { ...item, stock: cant };
+          if (item.id === action.payload && item.cantidad) {
+            return { ...item, cantidad: item.cantidad + 1 };
+          }
           return item;
         });
       case "[CARRITO] Disminuir Cantidad Compra":
         return state.map((item) => {
-          const cant = item.stock - 1;
-          if (item.id === action.payload && item.stock > 1)
-            return { ...item, stock: cant };
+          if (item.id === action.payload && item.cantidad > 1) {
+            return { ...item, cantidad: item.cantidad - 1 };
+          }
           return item;
         });
       case "[CARRITO] Eliminar Compra":

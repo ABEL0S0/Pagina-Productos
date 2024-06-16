@@ -43,17 +43,20 @@ public class Producto {
     @Column(name = "stock")
     private int stock;
 
-
+    @Basic(optional = true)
+    @Column(name = "image")
+    private String img;
 
     public Producto() {}
 
-    public Producto(Integer id, String nombre, String descripcion, float precio, Integer id_categoria, int stock) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.id_categoria = id_categoria;
-        this.stock = stock;
+
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Integer getId() {
