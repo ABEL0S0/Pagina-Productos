@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CarritoContext } from "../Context/CarritoContext";
+import { CarritoContext } from "../Elements/CarritoContext";
 
 export const Carritopage = () => {
   const { listaCompras, aumentarCantidad, disminuirCantidad, eliminarCompra } =

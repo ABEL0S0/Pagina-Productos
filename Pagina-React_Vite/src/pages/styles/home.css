@@ -1,7 +1,7 @@
-.nav {
-    top: -300%;
-    left: -75%;
-    height: 100%;
-    width: 250%;
+body:not(.home) #root {
+  background-color: rgb(43, 43, 43);
 }
 
+.container {
+  margin-left: 140px;
+}

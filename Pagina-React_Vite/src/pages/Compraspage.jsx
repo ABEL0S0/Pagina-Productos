@@ -1,7 +1,7 @@
 import { Card } from "../components/Card";
 import { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
-import { CarritoContext } from "../Context/CarritoContext";
+import { ProductContext } from "../Elements/ProductContext";
+import { CarritoContext } from "../Elements/CarritoContext";
 
 export const ComprasPage = () => {
   const productos = useContext(ProductContext);
@@ -41,4 +41,3 @@ export const ComprasPage = () => {
     </div>
   );
 };
-
